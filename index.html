@@ -63,6 +63,7 @@
     <table id="studiesTable">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Study Title</th>
           <th>Date</th>
           <th>DOI</th>
@@ -92,7 +93,7 @@
             cols.forEach((col, index) => {
               const td = document.createElement('td');
               
-              if (index === 2 || index === 5) { // Assuming the DOI and Link are in the 3rd and 6th columns
+              if (index === 3 || index === 6) { // Assuming the DOI and Link are in the 4th and 7th columns now
                 const a = document.createElement('a');
                 a.href = col;
                 a.target = "_blank";
