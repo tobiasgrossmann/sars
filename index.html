@@ -79,7 +79,7 @@
   </main>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      fetch('sars_studies.csv')
+      fetch('sars_studies.csv') // Adjust the path to where the CSV is hosted
         .then(response => response.text())
         .then(data => {
           const rows = data.split('\n').slice(1);
@@ -89,9 +89,19 @@
             const cols = row.split(',');
             const tr = document.createElement('tr');
             
-            cols.forEach(col => {
+            cols.forEach((col, index) => {
               const td = document.createElement('td');
-              td.innerHTML = col;
+              
+              if (index === 2 || index === 5) { // Assuming the DOI and Link are in the 3rd and 6th columns
+                const a = document.createElement('a');
+                a.href = col;
+                a.target = "_blank";
+                a.innerText = col;
+                td.appendChild(a);
+              } else {
+                td.innerHTML = col;
+              }
+
               tr.appendChild(td);
             });
             
